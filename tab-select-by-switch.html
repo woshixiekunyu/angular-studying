@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.title{
+		display: flex;
+	}
+	.title div{
+		flex:1;
+		line-height: 30px;
+		text-align: center;
+	}
+	.page{text-align: center;}
+	.active{
+		border-bottom: 1px solid #f00;
+	}
+</style>
+<body>
+	<div ng-controller="controlTitle">
+		<div class="title">
+			<div ng-click="show(1)" ng-class="{'active':bool1}">第一页</div>
+			<div ng-click="show(2)" ng-class="{'active':bool2}">第二页</div>
+		</div>
+		<div class="page" ng-switch="num1">
+			<p ng-switch-when="1">1</p>
+			<p ng-switch-when="2">2</p>
+		</div>
+	</div>
+</body>	
+<script src="node_modules/angular/angular.js"></script>
+<script>
+	var app = angular.module('demo',[]);
+	app.controller('controlTitle',function($scope){
+		$scope.num1 = '1';
+		$scope.bool1 = true;
+		$scope.bool2 = false;
+		$scope.show = function(num){
+			if(num === 1){
+				$scope.num1 = '1';
+				$scope.bool1 = true;
+				$scope.bool2 = false;
+			}else{
+				$scope.num1 = '2';
+				$scope.bool1 = false;
+				$scope.bool2 = true;
+			}
+		}
+	})
+</script>
+</html>
