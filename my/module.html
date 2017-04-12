@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="indexctrl">
+		<p ng-bind="name"></p>
+		<input type="text" ng-model="name">
+		<p>分割上下</p>
+		<xky-p abc="1"></xky-p>
+		<xky-p abc="2"></xky-p>
+	</div>
+	<!-- <div ng-controller="directrl2">
+		<h1>{{name}}</h1>
+		<xky-p></xky-p>
+	</div> -->
+</body>
+<!-- <script src="js/jquery-3.1.1.js"></script> -->
+<script src="js/angular.js"></script>
+<script>
+	var app = angular.module('demo',[]);
+	app.controller('indexctrl',function($scope){
+		// $scope.name = 'xie';
+		$scope.name = 'xie';
+	})
+	// app.controller('directrl2',function($scope){
+	// 	$scope.name = 'kun'
+	// })
+
+	app.directive('xkyP',function(){
+		return {
+			templateUrl:'directive/newtest.html',
+			scope:{},
+			// controller:'directrl2',
+
+			// scope:true,
+			link:function(scope,ele,attr){
+				// scope.name = 'yu'
+				scope.name = 'as';
+				scope.content = "组件1";
+				scope.num=attr.abc;
+				if(scope.num == 1){
+					ele.find('p').css('color','green')			
+				}else{
+					ele.find('p').css('color','red')
+				}
+				
+			}
+		}
+	})
+</script>
+</html

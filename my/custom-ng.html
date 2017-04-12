@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+	<div ng-controller="indexctrl">
+		<p ng-bind="name"></p>
+		<xky-p></xky-p>
+		<!-- <p xky-p></p>
+		<p class="xky-p"></p> -->
+		<!-- directive: xky-p -->
+	</div>
+	<div ng-controller="indexctr2">
+		<p ng-bind="name"></p>
+		<xky-p></xky-p>
+		<!-- <p xky-p></p>
+		<p class="xky-p"></p> -->
+		<!-- directive: xky-p -->
+	</div>
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+	var app = angular.module('demo',[]);
+	app.controller('indexctrl',function($scope){
+		$scope.name="xie";
+		$scope.button="确定";
+	})
+	app.controller('indexctr2',function($scope){
+		$scope.name="xie";
+		$scope.button="取消";
+	})
+	app.directive('xkyP',function(){
+		return {
+			// restrict:'ECAM',
+			replace:false,
+			templateUrl:'directive/test.html'
+		}
+	})
+</script>
+</html>

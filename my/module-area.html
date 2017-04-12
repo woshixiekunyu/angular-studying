@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="indexctrl">
+		<p ng-clickk="abc()">{{name}}</p>
+		<p ng-bind="type"></p>
+		<!-- <p>{{age}}</p> -->
+		<xky ng-clickk='good()' data = '1'></xky>
+		<xky ng-clickk='good()' data = '2'></xky>
+	</div>
+</body>
+<script src="js/angular.js"></script>
+<script>
+	var app = angular.module('demo',[]);
+	app.controller('indexctrl',function($scope){
+		$scope.name = '谢坤裕';
+		$scope.type = '一个年轻的小伙子';
+
+		$scope.abc = function(){
+			console.log(666)
+		}
+		$scope.good = function(){
+
+			console.log('good')
+		}
+	})
+	app.directive("xky",function(){
+		return {
+			scope:{},
+			templateUrl:'directive/test-area.html',
+			link:function(scope,ele,attr){
+				scope.age = '18';
+				ele.bind('click',function(){
+					if(attr.data == '1'){
+						console.log(777)
+					}
+				})
+			}
+		}
+	})
+	app.directive('ngClickk',function(){
+		return {
+
+			link:function(scope,ele,attr){
+				ele.bind('click',function(){
+					scope.$apply(attr.ngClickk);
+				})
+			}
+		}
+	})
+</script>
+</html>
