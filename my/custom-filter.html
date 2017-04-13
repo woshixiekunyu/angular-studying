@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="indexCtrl">
+		<p xky ng-bind="name | test"></p>
+		<p xky ng-bind-html="html | html"></p>
+		<!-- <xky ng-bind-html="html"></xky> -->
+		<p ng-bind="num"></p>
+	</div>
+</body>
+<script src="js/angular.js"></script>
+<script>
+	var app = angular.module('demo',[]);
+	app.controller('indexCtrl',function($scope,$filter){
+		$scope.arr = ['ass','sss']
+		$scope.num = $filter('currency')('123456789','^')
+		$scope.abc = $filter('json')('xie')
+	})
+	app.directive('xky',function(){
+		return {
+			link:function(scope,ele,attr){
+				scope.name = 'xie';
+				scope.html = '<span style="color:red">你好吗</span>';
+				
+			}
+		}
+	})
+	app.filter('test',function(){
+		return function(value){
+			return value+'ed';
+		}
+	})
+	app.filter('html',function($sce){
+		return function(value){
+			return $sce.trustAsHtml(value)
+		}
+	})
+</script>
+</html>
