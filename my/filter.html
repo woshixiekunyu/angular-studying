@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="indexCtrl">
+		<!-- <p ng-bind="name"></p> -->
+		<p ng-repeat="p in obj">{{p.age|currency:'*'}}{{p.name|lowercase}}</p>
+		<p ng-repeat="p in obj|orderBy:'age'">{{p.age}}{{p.name}}</p>
+		<input type="text" ng-model="text">
+		<p ng-repeat="p in obj | filter:{name:text}">{{p.name}}{{p.age}}</p>
+		<p ng-bind="num | number:2"></p>
+		<xky></xky>
+	</div>
+</body>
+<script src="js/angular.js"></script>
+<script>
+	var app = angular.module('demo',[]);
+	app.controller('indexCtrl',function($scope){
+		$scope.name = 'xie';
+		$scope.num = 123456;
+		$scope.text = '';
+	})
+	app.directive('xky',function(){
+		return {
+			link:function(scope,ele,attr){
+				scope.obj = [{
+					name:'xie',
+					age:22
+				},{
+					name:'kun',
+					age:22
+				},{
+					name:'yu',
+					age:20
+				},{
+					name:'chen',
+					age:22
+				},{
+					name:'yu',
+					age:19
+				},{
+					name:'ting',
+					age:20
+				}]
+			},
+			template:'<span style="color:red">对的互动</span>'
+		}
+	})
+</script>
+</html>
