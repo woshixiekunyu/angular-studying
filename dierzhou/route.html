@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>route</title>
+</head>
+<body>
+	<a href="#!/page1">1</a>
+	<a href="#!/page2">2</a>
+	<a href="#!/page3">3</a>
+	<div ng-view=""></div>
+</body>
+<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>
+<script>
+	var app = angular.module('demo',['ngRoute']);
+	app.config(function($routeProvider){
+		$routeProvider.when('/page1',{
+			templateUrl:''
+		}).when('/page2',{
+			template:'<p>这是第二个页面</p>'
+		}).when('/page3',{
+			template:'<p>这是第三个页面</p>'
+		}).otherwise({
+			redirectTo:'/page2'
+		})
+	})
+</script>
+</html>
