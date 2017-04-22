@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="cotrol1">
+		<p ng-bind="name" style="font-size: {{size}}"></p>
+		<p ng-bind="bool"></p>
+		<p ng-bind="bool?(bool2?'11':'12'):'假'"></p>
+		<p ng-bind="arr[2]" style="font-size: {{bool?'12px':'20px';}}"></p>
+		<p ng-bind="obj.name" style="color:{{bool?'red':'green'}}"></p>
+		<span></span>
+		<style>
+			span{
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				background-color: #f00;
+				transition: 3s;
+				transform:translate({{bool?'200px':'0px'}},{{bool?'200px':'0px'}}) rotate({{bool?'20deg':'0deg'}}) 
+			}
+		</style>
+		<button ng-click = 'getfun()'>切换</button>
+	</div>
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+	var app = angular.module('demo',[])
+	app.controller('cotrol1',['$scope',function(a){
+		a.name = 'laowang';
+		a.bool = true;
+		a.bool2 = false;
+		a.arr = [1,2,3];
+		a.obj = {
+			name:'lala'
+		}
+		// a.color = a.bool?'red':'green';
+		a.getfun = function(){
+			a.bool = !a.bool;
+		}
+		a.change = function(){
+			a.size=100+'px';
+		}
+		a.change()
+
+	}])
+</script>
+</html>

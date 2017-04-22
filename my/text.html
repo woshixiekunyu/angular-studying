@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj={
+		name:'laoxie',
+		age:19
+	}
+	var obj2 = {
+		getName:function(){
+			console.log(this.name);
+		}
+		
+	}
+	var obj3 = {
+		getAge:function(){
+			console.log(this.age)
+		}
+	}
+	// console.log(obj2.getName.call(obj))
+	// console.log(obj2.getName.apply(obj))
+	// console.log(obj2.getName.bind(obj)())
+	obj2.getName.call(obj)
+	obj3.getAge.apply(obj)
+	obj2.getName.bind(obj)()
+</script>
+</html>

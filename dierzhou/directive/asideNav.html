@@ -1,18 +1,14 @@
-<div class="asideNav">
-	<ul>
-		<li><a href="#!/nav/a">推荐</a></li>
-		<li><a href="#">热点</a></li>
-		<li><a href="#">视频</a></li>
-		<li><a href="#">图片</a></li>
-		<li><a href="#">段子</a></li>
-		<li><a href="#">社会</a></li>
-		<li><a href="#">娱乐</a></li>
-		<li><a href="#">科技</a></li>
-		<li><a href="#">体育</a></li>
-		<li><a href="#">汽车</a></li>
-		<li><a href="#">搞笑</a></li>
-		<li><a href="#">更多</a></li>
-	</ul>
+<div>
+	<div class="asideNav">
+		<ul ng-repeat="a in arr">
+			<li><a ng-href="{{a.url}}">{{a.name}}</a></li>
+		</ul>
+			<!-- <li><a ng-repeat="a in arr1" href="{{a.url}}">{{a.name}}</a></li> -->
+	</div>
 	<div ui-view></div>
-		<!-- <li><a ng-repeat="a in arr1" href="{{a.url}}">{{a.name}}</a></li> -->
 </div>
+<style>
+	.asideNav{width: 50px;margin-left: 30px;}
+	.asideNav li{height: 40px;line-height: 40px;text-align: center;width: 100px;border-radius: 5px}
+	.asideNav li:hover{background-color: #f90;}
+</style>

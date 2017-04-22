@@ -12,10 +12,7 @@
 		.nav ul li{flex:1;text-align: center;}
 		.nav ul li:hover{background-color: #f90;}
 		.nav li a{color: #fff;}
-
-		.asideNav{width: 50px;margin-left: 30px;}
-		.asideNav li{height: 40px;line-height: 40px;text-align: center;width: 100px;border-radius: 5px}
-		.asideNav li:hover{background-color: #f90;}
+		p{color:red;float: right;}
 	</style>
 	
 </head>
@@ -42,37 +39,56 @@
 	app.config(function($stateProvider){
 		$stateProvider.state('nav',{
 			url:'/nav',
-			templateUrl:'directive/asideNav.html'
+			templateUrl:'directive/asideNav.html',
+			controller:'arr1'
 		}).state('nav.a',{
 			url:'/a',
 			templateUrl:'directive/main.html'
+			
+		}).state('nav.b',{
+			url:'/b',
+			// template:'<p>dsaiuf</p>'
+			templateUrl:'directive/main.html'
+			
+		}).state('nav.c',{
+			url:'/c',
+			// template:'<p>909oldx</p>'
+			templateUrl:'directive/main.html'
+			
+		}).state('nav.d',{
+			url:'/d',
+			template:'<p>3453rfv</p>'
+			
+		}).state('nav.e',{
+			url:'/e',
+			template:'<p>hjkjh</p>'
+			
+		}).state('nav.f',{
+			url:'/f',
+			template:'<p>h76dsfj545435kjh</p>'
 		})
 	})
-	// app.directive('arr1',function($scope){
-	// 	return {
-	// 		link:function(scope,ele,attr){
-	// 			scope.arr = [{
-	// 				url:'#!/nav/a',
-	// 				name:'推荐'
-	// 			},{
-	// 				url:'#!/nav/a',
-	// 				name:'热点'
-	// 			},{
-	// 				url:'#!/nav/a',
-	// 				name:'视频'
-	// 			},{
-	// 				url:'#!/nav/a',
-	// 				name:'图片'
-	// 			},{
-	// 				url:'#!/nav/a',
-	// 				name:'段子'
-	// 			},{
-	// 				url:'#!/nav/a',
-	// 				name:'社会'
-	// 			},]
-	// 		}
-	// 	}
-	// })
+	app.controller('arr1',function($scope){
+		$scope.arr = [{
+			url:'#!/nav/a',
+			name:'推荐'
+		},{
+			url:'#!/nav/b',
+			name:'热点'
+		},{
+			url:'#!/nav/c',
+			name:'视频'
+		},{
+			url:'#!/nav/d',
+			name:'图片'
+		},{
+			url:'#!/nav/e',
+			name:'段子'
+		},{
+			url:'#!/nav/f',
+			name:'社会'
+		},]
+	})
 	// app.directive('arr1',function($scope){
 	// 	return {
 	// 		link:function(scope,ele,attr){

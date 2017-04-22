@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<body ng-controller="indexCtrl">
+		<p>{{name}}</p>
+		<div ui-view></div>
+	</body>
+	<script src="../js/angular.js"></script>
+	<script src="../js/angular-ui-router.js"></script>
+	<script>
+		var app = angular.module('demo',['ui.router']);
+		app.config(function($stateProvider){
+			$stateProvider.state('page',{
+				url:'/page1',
+				templateUrl:'template/page1.html',
+				controller:'indexCtrl'
+			})
+			.state('page2',{
+				url:'/page2/:id/:name',
+				templateUrl:'template/page2.html',
+				controller:'index2Ctrl'
+			})
+		})
+		app.controller('indexCtrl',function($scope,$window){
+			$scope.name = 'xie';
+			$scope.id = '1';
+			$scope.buy = function(){
+				$window.location.href = '#!/page2/'+$scope.id+'/'+$scope.name;
+			}
+		})
+		app.controller('index2Ctrl',function($scope,$state){
+			$scope.id = $state.params.id
+		})
+	</script>
+</html>

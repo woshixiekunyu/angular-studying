@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.title{
+		display: flex;
+	}
+	.title div{
+		flex:1;
+		line-height: 30px;
+		text-align: center;
+	}
+	.page{text-align: center;}
+	.active{
+		border-bottom: 1px solid #f00;
+	}
+</style>
+<body>
+	<div ng-controller="controlTitle">
+		<div class="title">
+			<div ng-click="show(1)" ng-class="{'active':bool1}" style="color:{{color}}">第一页</div>
+			<div ng-click="show(2)" ng-class="{'active':bool2}">第二页</div>
+		</div>
+		<div class="page" ng-switch="num1">
+			<div ng-switch-when="1">1</div>
+			<div ng-switch-when="2">
+				<p style="font-size:12px">{{arr[val]}}</p>
+				<input type="range" ng-mousemove="random()" ng-model="val",value="{{val}}">
+			</div>
+		</div>
+	</div>
+</body>	
+<script src="js/angular.js"></script>
+<script>
+	var app = angular.module('demo',[]);
+	app.controller('controlTitle',function($scope){
+		$scope.num1 = '1';
+		$scope.bool1 = true;
+		$scope.bool2 = false;
+		$scope.val = 0;
+		$scope.color = 'red';
+		$scope.arr='几大奖赛但好似U哈迪，的说法是否，佛挡杀佛倒数分，倒数发多少，发多少，分是，的分，倒数分，倒数分，倒数，发多少分倒数，发多少，发多少发多少分倒数发多少发撒旦法倒数，分倒数发多少发多少发多少分会对飞虎废话雕塑覅的说法但是你比U佛塑股份倒数';
+		
+
+		$scope.show = function(num){
+			if(num === 1){
+				$scope.num1 = '1';
+				$scope.bool1 = true;
+				$scope.bool2 = false;
+			}else{
+				$scope.num1 = '2';
+				$scope.bool1 = false;
+				$scope.bool2 = true;
+			}
+		}
+		$scope.random = function(){
+			var str = '0123456789abcdef';
+			var res = '#';
+			for(var i=0;i<6;i++){
+				var idx = parseInt(Math.random()*str.length);
+				res += str[idx];
+			}
+			var arrcon = $scope.arr;
+			var arr1 = [];
+			for(var i=0;i<arrcon.length;i++){
+				arr1[i] = arrcon[i];
+			}
+			// console.log(arr1)
+			// var str;
+			for(var i=0;i<arrcon.length;i++){
+				arrcon = arrcon.split(arr1[i]);
+
+				arrcon = arrcon.join('<span style="color:'+res+'">'+arr1[i]+'</span>')
+			}
+				// console.log(arrcon)
+				
+			// $scope.color = res;
+			// return res;
+			console.log(res)
+		}
+		// $scope.random();
+	})
+</script>
+</html>

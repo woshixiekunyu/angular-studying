@@ -1,0 +1,20 @@
+<div class="weui-navbar">
+
+    <div class="weui-navbar__item weui-bar__item_on">
+	    <a style="float: left;" ng-click="back()"><<后退</a>
+    	<p mark ng-click="showMark()">
+	    	{{name}}
+    	</p>
+    	
+    </div>
+   
+</div>
+<div ng-show="isShowMark">
+	<div class="weui-mask"></div>
+    <div class="weui-dialog">
+        <div class="weui-dialog__bd">{{name}}</div>
+        <div class="weui-dialog__ft">
+            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" ng-click="removeMark()">知道了</a>
+        </div>
+    </div>
+</div>

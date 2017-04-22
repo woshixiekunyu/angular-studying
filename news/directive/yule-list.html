@@ -1,0 +1,21 @@
+<div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+        <p style="text-align: center;" ng-click="sort()">排序</p>
+        <a ng-repeat="n in news | filter:searchValue | orderBy:'title':issort" href="{{n.link}}" class="weui-media-box weui-media-box_appmsg">
+            <!-- <div class="weui-media-box__hd" ng-show="n.image">
+                <img class="weui-media-box__thumb" ng-src="{{n.image}}" alt="">
+            </div> -->
+            <div class="weui-media-box__bd">
+
+                <h4 class="weui-media-box__title" ng-bind="n.title"></h4>
+
+                <p class="weui-media-box__desc">{{n.title}}{{n.pubDate}}</p>
+
+                <img style="width: 100%;height: 100px;" ng-repeat="i in n.imageurls" ng-src="{{i.url?i.url:''}}" alt="">
+                
+            </div>
+        </a>
+        
+    </div>
+    <more></more>
+</div>

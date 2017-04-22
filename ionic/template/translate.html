@@ -1,0 +1,31 @@
+<div>
+	<index></index>
+	<ion-side-menus>
+  		<!-- 中间内容 -->
+		<ion-side-menu-content>
+
+			<ion-header-bar class="bar-positive">
+			  	<div class="buttons">
+				    <button class="button" ng-click="toggleLeft()">memu</button>
+				</div>
+				<h1 class="title">有道翻译</h1>
+			</ion-header-bar>
+			<ion-content padding="true">
+				<div>
+					<input style="border: 1px solid #ccc" type="text" ng-model="val">
+					<button ng-click="translating(val)">翻译</button>
+					<ul ng-repeat="r in res.explains">
+						<li>{{r}}</li>
+					</ul>
+					<p>句子:{{res.translation[0]}}</p>
+					<ul ng-repeat="re in res.web">
+						更多：<li ng-repeat="v in re.value">{{v}}</li>
+					</ul>
+				</div>
+			</ion-content>
+		</ion-side-menu-content>
+
+		
+	</ion-side-menus>
+
+</div>

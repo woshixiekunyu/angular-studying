@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <script src="node_modules/angular/angular.js"></script> -->
+	<!-- <script>
+		console.log(angular);
+		//定义一个模块;这个模块是一个函数
+		//两个参数,一个是模块名字，另一个是数组
+		//只有一个时，数组为空
+		angular.module('name1',[])
+		//依赖于name1
+		angular.module('name2',['name1']);
+
+		
+	</script> -->
+	
+</head>
+
+<body>
+	<div ng-controller="name1">
+		<p style="color:{{color}}">{{name}}</p>
+		<style>
+			p{
+				opacity:{{light}};
+			}
+		</style>
+	</div>
+	
+</body>
+
+<script src="node_modules/angular/angular.js"></script>
+<script>
+	angular.module('demo',[])
+	.controller('name1',function($scope){
+		$scope.color = 'red';
+		$scope.name = 'xie';
+		$scope.light = '0.3';
+	})
+</script>
+</html>

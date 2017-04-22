@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.fsize{
+		font-size:30px;
+		color:#f90;
+	}
+	.bgcolor{
+		background-color: yellow;
+	}
+</style>
+<body>
+	<div ng-controller="control-first">
+		<p ng-bind="name" ng-class="{fsize:bool,bgcolor:!bool}"></p>
+		<input type="text" ng-model="text">
+		<p ng-bind="text"></p>
+		<select ng-model="num">
+			<option value="red">红色</option>
+			<option value="green">绿色</option>
+			<option value="blue">蓝色</option>
+		</select>
+		<p ng-bind="name" style="color:{{num}}"></p>
+		<input type="range" ng-model="size">
+		<p ng-bind="text" style="font-size:{{size+'px'}}"></p>
+		<p ng-show="bool">{{text}}</p>
+		<p style="display: {{bool?'block':'none';}}">{{name}}</p>
+		<button ng-click="show()">切换</button>
+
+
+		<ul>
+			<li ng-repeat="tex in arr">{{tex}}</li>
+		</ul>
+		<select ng-model="number">
+			<option  ng-repeat="tex in arr" value="{{tex}}">{{tex}}</option>
+		</select>
+		<p ng-bind="number"></p>
+
+		<table>
+			<tr>
+				<td ng-repeat="val in arrObj">{{val.name}}</td>
+			</tr>
+			<tr>
+				<td ng-repeat="val in arrObj">{{val.age}}</td>
+			</tr>
+		</table>
+
+		<p ng-bind="content" ng-if="bool"></p>
+		<img ng-src="{{img}}">
+
+		<!-- //src与href在写在ng的属性值的时候需要加{{}} -->
+
+		<select ng-model="page">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+		<button ng-click="go()">跳转</button>
+		<div ng-switch="pages">
+			<p ng-switch-when="1">第一页</p>
+			<p ng-switch-when="2">第二页</p>
+			<p ng-switch-when="3">第三页</p>
+		</div>
+	</div>
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+	var app = angular.module('demo',[]);
+	app.controller('control-first',function($scope){
+		$scope.name = 'xky';
+		$scope.content = '我想说什么，但我不想说'
+		$scope.text = '什么'
+		$scope.num = 'red';
+		$scope.size = 16;
+		$scope.bool = true;
+		$scope.number = '1';  
+		$scope.arr = [1,2,3,4];
+		$scope.img = 'img/erweima.png'
+		$scope.arrObj = [{
+			name:'xky',
+			age:22
+		},{
+			name:'cyt',
+			age:22
+		}]
+		$scope.page = '1';
+		$scope.pages = '1';
+		$scope.show = function(){
+			$scope.bool = !$scope.bool;
+		}
+		$scope.go=function(){
+			$scope.pages = $scope.page;
+		}
+	})
+</script>
+</html>

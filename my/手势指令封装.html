@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="controlmove">
+ 		<p moving>sss</p>
+	</div>
+</body>
+<script src="js/angular.js"></script>
+<script>
+	var app = angular.module('demo',[]);
+	app.controller('controlmove',function($scope){
+		$scope.name = 'exchange';
+	})
+	app.directive('moving',function(){
+		return {
+
+			link:function(scope,ele,attr){
+				var xstart, xend, ystart, yend;
+				ele.bind('touchstart',function(e){
+					xstart = e.changedTouches[0].pageX;
+					ystart = e.changedTouches[0].pageY;
+					console.log(xstart,ystart)
+				})
+				ele.bind('touchend',function(e){
+					xend = e.changedTouches[0].pageX;
+					yend = e.changedTouches[0].pageY;
+					console.log(xend,yend)
+					// if(Math.abs(xstart-xend)>)
+				})
+			}
+		}
+	})
+
+</script>
+</html>

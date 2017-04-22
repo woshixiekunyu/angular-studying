@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="indexCtrl">
+		<p>{{name}}</p>
+		<form name="myForm">
+			<input type="email" name="users" ng-model="user" required>
+			<br>
+			<span ng-show="myForm.users.$dirty">有填写记录</span>
+			<span ng-show="myForm.users.$valid">合法</span>
+			<button ng-disabled="!user">提交</button>
+		</form>
+	</div>
+</body>
+<script src="js/angular.js"></script>
+<script>
+	var app = angular.module('demo',[]);
+	app.controller('indexCtrl',function($scope){
+		$scope.name = '表单验证';
+	})
+</script>
+</html>

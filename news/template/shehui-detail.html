@@ -1,0 +1,17 @@
+<article class="weui-article">
+    <section>
+        <h2 class="title">{{newsdata.name}}</h2>
+        <section>
+            <h3>{{newsdata.love}}</h3>
+            <p>
+                {{newsdata.text}}
+            </p>
+            <p>
+                <img src="{{newsdata.image0?newsdata.image0:newsdata.profile_image}}" alt="">
+            </p>
+            <a href="{{newsdata.video_uri}}">视频链接</a>
+            <a href="{{newsdata.weixin_url}}">微信链接</a>
+        </section>
+       
+    </section>
+</article>

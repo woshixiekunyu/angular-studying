@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="#!/page1">1</a>
+	<a href="#!/page2">2</a>
+	<div ui-view name="view1"></div>
+	<div ui-view name="view2"></div>
+</body>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-ui-router.js"></script>
+<script>
+	var app = angular.module('demo',['ui.router']);
+	app.config(function($stateProvider){
+		$stateProvider.state('page',{
+			url:'/page1',
+			// template:'<p>content1</p>',
+			views:{
+				'view1':{
+					template:'<p>content1</p>'
+				},
+				// 'view2':{
+				// 	template:'<p>content2</p>'
+				// }
+			}
+		}).state('page2',{
+			url:'/page2',
+			// template:'<p>content2</p>'
+			views:{
+				'view2':{
+					template:'<p>content2</p>'
+				}
+			}
+		})
+	})
+</script>
+</html>
